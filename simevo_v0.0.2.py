@@ -3,7 +3,7 @@ import random
 
 BASES = ("A","C","T","G")
 STOPCODON = ('TAG','TAA','TGA')
-GENOMESIZE = 100
+GENOMESIZE = 300
 #number of bases of the organism
 POPULATIONSIZE = 250
 #size of population
@@ -49,7 +49,7 @@ class Bug:
             #gives unfavorable fitness for premature stop codon
         
         fitness += G_count + C_count
-        return fitness
+        return (fitness/GENOMESIZE)*100
     
 
     def mutate_random_base(self):
@@ -123,7 +123,7 @@ class Population:
         
         mean_fitness = sum_fitness/len(self.bug_list)
 
-        return mean_fitness
+        return round(mean_fitness, 4)
         
 #============================================================    
 def main():
